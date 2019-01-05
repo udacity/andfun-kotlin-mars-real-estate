@@ -40,6 +40,7 @@ private val moshi = Moshi.Builder()
  */
 private val retrofit = Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi))
+        // TODO (02) Use .addCallAdapterFactory to add the CoroutineCallAdapterFactory
         .baseUrl(BASE_URL)
         .build()
 
@@ -54,6 +55,7 @@ interface MarsApiService {
      */
     @GET("realestate")
     fun getProperties():
+    // TODO (03) Change the return type from our getProperties call to Deferred
             Call<List<MarsProperty>>
 }
 
