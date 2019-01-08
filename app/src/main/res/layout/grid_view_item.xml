@@ -20,6 +20,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- TODO (08) Add the viewModel data variable to this layout -->
+    <!-- TODO (09) Set the app:imageUrl attribute to viewModel.property.imgSrcUrl -->
     <ImageView
         android:id="@+id/mars_image"
         android:layout_width="match_parent"

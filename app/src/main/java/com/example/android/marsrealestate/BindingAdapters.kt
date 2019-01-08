@@ -17,3 +17,6 @@
 
 package com.example.android.marsrealestate
 
+// TODO (06) Create the Binding Adapter, converting the imgUrl to a URI with the https scheme
+// TODO (07) Use Glide to load the imgUri into the imgView
+// TODO (11) Add the requestOptions for the placeholder and error into the Glide call
