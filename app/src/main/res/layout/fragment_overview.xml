@@ -31,17 +31,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.android.marsrealestate.MainActivity">
-        <!-- TODO (05) Replace the TextView with a RecyclerView -->
-        <!-- TODO (11) Add app:listData = "@viewModel.properties" to bind the listData -->
-        <!-- TODO (13) Add android:clipToPadding = false -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.property.imgSrcUrl}"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/photos_grid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="6dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:listData="@{viewModel.properties}"
+            app:spanCount="2"
+            tools:itemCount="16"
+            tools:listitem="@layout/grid_view_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
