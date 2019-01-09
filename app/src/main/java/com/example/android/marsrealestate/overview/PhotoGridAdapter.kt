@@ -16,3 +16,8 @@
  */
 
 package com.example.android.marsrealestate.overview
+
+// TODO (06) Create PhotoGridAdapter that extends the RecyclerView ListAdapter with DiffCallback
+// TODO (07) Add unimplemented members for PhotoGridAdapter, create and implement DiffCallback companion class
+// TODO (08) Create and implement the MarsPropertyViewHolder inner class.
+// TODO (09) Override and implement onCreateViewHolder and onBindViewHolder

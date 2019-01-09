@@ -23,6 +23,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
+// TODO (10) Add a binding adapter for the listData attribute that calls submitList on the RV adapter
 /**
  * Uses the Glide library to load an image by URL into an [ImageView]
  */
