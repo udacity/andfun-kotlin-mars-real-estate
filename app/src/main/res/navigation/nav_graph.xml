@@ -38,7 +38,10 @@
         android:name="com.example.android.marsrealestate.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
-        <!-- TODO (12) Add selectedProperty argument of type MarsProperty -->
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.example.android.marsrealestate.network.MarsProperty"
+            />
     </fragment>
 
 </navigation>

@@ -21,7 +21,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO (02) Add <data> declaration with DetailViewModel binding variable -->
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.android.marsrealestate.detail.DetailViewModel" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,24 +37,23 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <!-- TODO (03) Add app:imageUrl binding adapter attribute pointing to the imgSrcUrl for the selectedProperty -->
             <ImageView
                 android:id="@+id/main_photo_image"
                 android:layout_width="0dp"
                 android:layout_height="266dp"
                 android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.selectedProperty.imgSrcUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
-            <!-- TODO (04) Add text attributes for type and value pointing to the values from the selectedProperty -->
-            <!-- TODO (19) Swap text attributes for displayProperty Type and Price in the ViewModel" -->
             <TextView
                 android:id="@+id/property_type_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:text="@{viewModel.displayPropertyType}"
                 android:textColor="#de000000"
                 android:textSize="39sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:text="@{viewModel.displayPropertyPrice}"
                 android:textColor="#de000000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
