@@ -50,3 +50,5 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
                 .into(imgView)
     }
 }
+
+// TODO (04) Add the binding adapter to show the MarsApi status in the ImageView and show/hide the view

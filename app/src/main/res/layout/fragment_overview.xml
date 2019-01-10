@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.android.marsrealestate.MainActivity">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/photos_grid"
             android:layout_width="0dp"
@@ -46,5 +47,8 @@
             app:spanCount="2"
             tools:itemCount="16"
             tools:listitem="@layout/grid_view_item" />
+
+        <!-- TODO (05) Add ImageView to the ConstraintLayout, wrap_content, same constraints as RecyclerView -->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
