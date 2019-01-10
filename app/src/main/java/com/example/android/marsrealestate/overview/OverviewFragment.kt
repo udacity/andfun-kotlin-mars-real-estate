@@ -50,8 +50,11 @@ class OverviewFragment : Fragment() {
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
 
+        // TODO (10) Initialize PhotoGridAdapter with an OnClickListener that calls viewModel.displayPropertyDetails
         // Sets the adapter of the photosGrid RecyclerView
         binding.photosGrid.adapter = PhotoGridAdapter()
+
+        // TODO (13) Observe navigateToSelectedProperty, Navigate when MarsProperty !null, then call displayPropertyDetailsComplete()
 
         setHasOptionsMenu(true)
         return binding.root
