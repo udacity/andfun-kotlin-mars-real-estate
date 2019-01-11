@@ -81,4 +81,5 @@ class OverviewFragment : Fragment() {
         inflater.inflate(R.menu.overflow_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+    // TODO (07) override onOptionsItemSelected and have it call updateFilter on the viewmodel
 }

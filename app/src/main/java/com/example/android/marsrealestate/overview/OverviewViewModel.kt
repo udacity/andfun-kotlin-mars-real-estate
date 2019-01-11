@@ -65,6 +65,7 @@ class OverviewViewModel : ViewModel() {
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
      */
     init {
+        // TODO (05) Add MarsApiFilter.SHOW_ALL as a default parameter to the initial getMarsRealEstateProperties call
         getMarsRealEstateProperties()
     }
 
@@ -73,9 +74,11 @@ class OverviewViewModel : ViewModel() {
      * [MarsProperty] [List] and [MarsApiStatus] [LiveData]. The Retrofit service returns a
      * coroutine Deferred, which we await to get the result of the transaction.
      */
+    // TODO (03) Add MarsApiFilter parameter to getMarsRealEstateProperties
     private fun getMarsRealEstateProperties() {
         coroutineScope.launch {
             // Get the Deferred object for our Retrofit request
+            // TODO (04) Add filter to getProperties() with filter.value
             var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
             try {
                 _status.value = MarsApiStatus.LOADING
@@ -113,4 +116,6 @@ class OverviewViewModel : ViewModel() {
     fun displayPropertyDetailsComplete() {
         _navigateToSelectedProperty.value = null
     }
+
+    // TODO (06) Add updateFilter method that takes a filter input and re-gets the properties
 }
