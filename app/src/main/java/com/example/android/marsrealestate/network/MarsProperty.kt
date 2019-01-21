@@ -17,4 +17,6 @@
 
 package com.example.android.marsrealestate.network
 
+// TODO (02) Convert this class to a Kotlin data class that contains properties that match the JSON
+// TODO (03) Use @Json to remap the img_src field to imgSrcUrl in the data class
 class MarsProperty()
