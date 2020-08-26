@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    
     ext {
         // Versions for all the dependencies we plan to use. It's particularly useful for kotlin and
         // navigation where the versions of the plugin needs to be the same as the version of the
