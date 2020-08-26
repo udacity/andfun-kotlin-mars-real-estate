@@ -56,7 +56,7 @@ interface MarsApiService {
      */
     // TODO (02) Add filter @Query value to the getProperties method
     @GET("realestate")
-    fun getProperties():
+    suspend fun getProperties(): List<MarsProperty>
 }
 
 /**
