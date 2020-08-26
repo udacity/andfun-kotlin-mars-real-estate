@@ -22,9 +22,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.marsrealestate.network.MarsApi
 import com.example.android.marsrealestate.network.MarsProperty
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+//import kotlinx.coroutines.CoroutineScope
+//import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 /**
@@ -48,10 +48,7 @@ class OverviewViewModel : ViewModel() {
     val property: LiveData<MarsProperty>
         get() = _property
 
-    // Create a Coroutine scope using a job to be able to cancel when needed
-    private var viewModelJob = Job()
 
-    // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
 
     /**
@@ -67,12 +64,11 @@ class OverviewViewModel : ViewModel() {
      * to get the result of the transaction.
      */
     private fun getMarsRealEstateProperties() {
-        coroutineScope.launch {
-            // Get the Deferred object for our Retrofit request
+        viewModelScope.launch {
             var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
             try {
                 // Await the completion of our Retrofit request
-                val listResult = getPropertiesDeferred.await()
+                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
                 _status.value = "Success: ${listResult.size} Mars properties retrieved"
                 if (listResult.size > 0) {
                     _property.value = listResult[0]
@@ -84,11 +80,5 @@ class OverviewViewModel : ViewModel() {
     }
 
     /**
-     * When the [ViewModel] is finished, we cancel our coroutine [viewModelJob], which tells the
-     * Retrofit service to stop.
      */
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
 }
