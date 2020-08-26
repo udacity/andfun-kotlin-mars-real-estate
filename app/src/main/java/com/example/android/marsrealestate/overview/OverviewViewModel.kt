@@ -22,9 +22,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.marsrealestate.network.MarsApi
 import com.example.android.marsrealestate.network.MarsProperty
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+//import kotlinx.coroutines.CoroutineScope
+//import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 enum class MarsApiStatus { LOADING, ERROR, DONE }
@@ -55,11 +55,7 @@ class OverviewViewModel : ViewModel() {
     val navigateToSelectedProperty: LiveData<MarsProperty>
         get() = _navigateToSelectedProperty
 
-    // Create a Coroutine scope using a job to be able to cancel when needed
-    private var viewModelJob = Job()
 
-    // the Coroutine runs using the Main (UI) dispatcher
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
@@ -74,15 +70,11 @@ class OverviewViewModel : ViewModel() {
      * coroutine Deferred, which we await to get the result of the transaction.
      */
     private fun getMarsRealEstateProperties() {
-        coroutineScope.launch {
-            // Get the Deferred object for our Retrofit request
+        viewModelScope.launch {
             var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
             try {
-                _status.value = MarsApiStatus.LOADING
-                // this will run on a thread managed by Retrofit
-                val listResult = getPropertiesDeferred.await()
+                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
                 _status.value = MarsApiStatus.DONE
-                _properties.value = listResult
             } catch (e: Exception) {
                 _status.value = MarsApiStatus.ERROR
                 _properties.value = ArrayList()
@@ -91,13 +83,7 @@ class OverviewViewModel : ViewModel() {
     }
 
     /**
-     * When the [ViewModel] is finished, we cancel our coroutine [viewModelJob], which tells the
-     * Retrofit service to stop.
      */
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
 
     /**
      * When the property is clicked, set the [_navigateToSelectedProperty] [MutableLiveData]

@@ -17,13 +17,13 @@
 
 package com.example.android.marsrealestate.network
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+// import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import kotlinx.coroutines.Deferred
+// import kotlinx.coroutines.Deferred
 
 private const val BASE_URL = "https://mars.udacity.com/"
 
@@ -41,7 +41,6 @@ private val moshi = Moshi.Builder()
  */
 private val retrofit = Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .baseUrl(BASE_URL)
         .build()
 
@@ -50,15 +49,12 @@ private val retrofit = Retrofit.Builder()
  */
 interface MarsApiService {
     /**
-     * Returns a Coroutine [Deferred] [List] of [MarsProperty] which can be fetched with await() if
-     * in a Coroutine scope.
+
      * The @GET annotation indicates that the "realestate" endpoint will be requested with the GET
      * HTTP method
      */
     @GET("realestate")
     fun getProperties():
-    // The Coroutine Call Adapter allows us to return a Deferred, a Job with a result
-            Deferred<List<MarsProperty>>
 }
 
 /**
