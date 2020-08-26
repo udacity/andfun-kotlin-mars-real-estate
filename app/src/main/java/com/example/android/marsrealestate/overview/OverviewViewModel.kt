@@ -22,9 +22,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.marsrealestate.network.MarsApi
 import com.example.android.marsrealestate.network.MarsProperty
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+//import kotlinx.coroutines.CoroutineScope
+//import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 // TODO (01) Create a MarsApiStatus enum with the LOADING, ERROR, and DONE states
@@ -49,10 +49,7 @@ class OverviewViewModel : ViewModel() {
     val properties: LiveData<List<MarsProperty>>
         get() = _properties
 
-    // Create a Coroutine scope using a job to be able to cancel when needed
-    private var viewModelJob = Job()
 
-    // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
 
     /**
@@ -69,14 +66,11 @@ class OverviewViewModel : ViewModel() {
      */
     private fun getMarsRealEstateProperties() {
         // TODO (03) Set the correct status for LOADING, ERROR, and DONE
-        coroutineScope.launch {
-            // Get the Deferred object for our Retrofit request
+        viewModelScope.launch {
             var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
             try {
-                // this will run on a thread managed by Retrofit
-                val listResult = getPropertiesDeferred.await()
+                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
                 _status.value = "Success: ${listResult.size}"
-                _properties.value = listResult
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
             }
@@ -84,11 +78,5 @@ class OverviewViewModel : ViewModel() {
     }
 
     /**
-     * When the [ViewModel] is finished, we cancel our coroutine [viewModelJob], which tells the
-     * Retrofit service to stop.
      */
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
 }
