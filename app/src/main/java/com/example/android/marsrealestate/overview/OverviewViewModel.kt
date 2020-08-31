@@ -42,7 +42,6 @@ class OverviewViewModel : ViewModel() {
     // TODO (03) Add the LiveData MarsProperty property with an internal Mutable and an external LiveData
 
 
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
 
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
