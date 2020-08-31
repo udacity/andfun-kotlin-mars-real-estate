@@ -67,7 +67,7 @@ class OverviewViewModel : ViewModel() {
         // TODO (03) Set the correct status for LOADING, ERROR, and DONE
         viewModelScope.launch {
             try {
-                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
+                _properties.value = MarsApi.retrofitService.getProperties()
                 _status.value = "Success: ${listResult.size}"
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
