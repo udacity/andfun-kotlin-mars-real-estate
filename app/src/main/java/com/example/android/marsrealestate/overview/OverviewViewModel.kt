@@ -51,20 +51,16 @@ class OverviewViewModel : ViewModel() {
      * Sets the value of the response LiveData to the Mars API status or the successful number of
      * Mars properties retrieved.
      */
-    private fun getMarsRealEstateProperties() {
-<<<<<<< HEAD
-        viewModelScope.launch {
-=======
-        viewModelScope.launch {          
->>>>>>> 3798e6d2ace6cc63f82758c2fde673ca060dad21
-            try {
-                var listResult = MarsApi.retrofitService.getProperties()
-                _response.value = "Success: ${listResult.size} Mars properties retrieved"
-            } catch (e: Exception) {
-                _response.value = "Failure: ${e.message}"
-            }
-        }
-    }
+     private fun getMarsRealEstateProperties() {
+         viewModelScope.launch {          
+             try {
+                 var listResult = MarsApi.retrofitService.getProperties()
+                 _response.value = "Success: ${listResult.size} Mars properties retrieved"
+             } catch (e: Exception) {
+                 _response.value = "Failure: ${e.message}"
+             }
+         }
+     }
 
     /**
      */
