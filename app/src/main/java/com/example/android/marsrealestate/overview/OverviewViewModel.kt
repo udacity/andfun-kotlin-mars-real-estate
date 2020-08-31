@@ -64,7 +64,7 @@ class OverviewViewModel : ViewModel() {
 <<<<<<< HEAD
         viewModelScope.launch {
             try {
-                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
+                _properties.value = MarsApi.retrofitService.getProperties()
 =======
         viewModelScope.launch {            
             try {
