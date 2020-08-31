@@ -66,6 +66,9 @@ class OverviewViewModel : ViewModel() {
             try {
                 _properties.value = MarsApi.retrofitService.getProperties(filter.value)
                 _status.value = "Success: ${listResult.size}"
+                if (listResult.size > 0) {
+                    _property.value = listResult
+                }
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
             }
