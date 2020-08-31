@@ -74,19 +74,23 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
+    
+    // Retrofit - Deprecated plugins - No more required
+    // implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    // implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+
     // Retrofit with Moshi Converter
-    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 
-    // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+    // Coroutines - Deprecated - No more required
+    // implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+    // implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
 
-    // Retrofit Coroutines Support
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+    // Retrofit Coroutines Support - Deprecated - No more required
+    // implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
     // Glide
-    implementation "com.github.bumptech.glide:glide:$version_glide"
+    // implementation "com.github.bumptech.glide:glide:$version_glide"
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
