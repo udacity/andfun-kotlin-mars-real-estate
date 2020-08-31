@@ -61,11 +61,11 @@ class OverviewViewModel : ViewModel() {
 
     /**
      * Gets Mars real estate property information from the Mars API Retrofit service and updates the
-     * [MarsProperty] [List] and [MarsApiStatus] [LiveData]. The Retrofit service returns a
-     * coroutine Deferred, which we await to get the result of the transaction.
+     * [MarsProperty] [List] and [MarsApiStatus] [LiveData]. 
      */
     private fun getMarsRealEstateProperties() {
         viewModelScope.launch {
+            _status.value = MarsApiStatus.LOADING
             try {
                 _properties.value = MarsApi.retrofitService.getProperties(filter.value)
                 _status.value = MarsApiStatus.DONE
