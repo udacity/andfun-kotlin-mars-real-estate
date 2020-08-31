@@ -67,7 +67,7 @@ class OverviewViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = MarsApiStatus.LOADING
             try {
-                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
+                _properties.value = MarsApi.retrofitService.getProperties()
                 _status.value = MarsApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = MarsApiStatus.ERROR
