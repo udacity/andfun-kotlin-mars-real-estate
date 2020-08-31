@@ -53,11 +53,10 @@ class OverviewViewModel : ViewModel() {
      * Mars properties retrieved.
      */
     private fun getMarsRealEstateProperties() {
-        viewModelScope.launch {
-            var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
+        viewModelScope.launch {          
             try {
                 // Await the completion of our Retrofit request
-                var listResult = getPropertiesDeferred.await()
+                var listResult = MarsApi.retrofitService.getProperties()
                 _response.value = "Success: ${listResult.size} Mars properties retrieved"
             } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}"
