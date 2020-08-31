@@ -74,7 +74,6 @@ class OverviewViewModel : ViewModel() {
     private fun getMarsRealEstateProperties() {
         viewModelScope.launch {
             // TODO (04) Add filter to getProperties() with filter.value
-            var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
             try {
                 _properties.value = MarsApi.retrofitService.getProperties(filter.value)
                 _status.value = MarsApiStatus.DONE
