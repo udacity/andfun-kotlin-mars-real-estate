@@ -63,11 +63,9 @@ class OverviewViewModel : ViewModel() {
      * to get the result of the transaction.
      */
     private fun getMarsRealEstateProperties() {
-        viewModelScope.launch {
-            var getPropertiesDeferred = MarsApi.retrofitService.getProperties()
+        viewModelScope.launch {            
             try {
-                // Await the completion of our Retrofit request
-                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
+                val listResult = MarsApi.retrofitService.getProperties()
                 _status.value = "Success: ${listResult.size} Mars properties retrieved"
                 if (listResult.size > 0) {
                     _property.value = listResult[0]
