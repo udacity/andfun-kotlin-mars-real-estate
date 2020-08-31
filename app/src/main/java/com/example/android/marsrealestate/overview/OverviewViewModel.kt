@@ -48,8 +48,6 @@ class OverviewViewModel : ViewModel() {
         get() = _property
 
 
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
-
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
      */
@@ -63,9 +61,15 @@ class OverviewViewModel : ViewModel() {
      * to get the result of the transaction.
      */
     private fun getMarsRealEstateProperties() {
+<<<<<<< HEAD
         viewModelScope.launch {
             try {
                 _properties.value = MarsApi.retrofitService.getProperties(filter.value)
+=======
+        viewModelScope.launch {            
+            try {
+                val listResult = MarsApi.retrofitService.getProperties()
+>>>>>>> 245b9a466980ae95bb2a6a7d65f84944912ac3d9
                 _status.value = "Success: ${listResult.size} Mars properties retrieved"
                 if (listResult.size > 0) {
                     _property.value = listResult[0]
