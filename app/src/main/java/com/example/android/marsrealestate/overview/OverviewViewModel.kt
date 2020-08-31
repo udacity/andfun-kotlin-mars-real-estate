@@ -75,7 +75,7 @@ class OverviewViewModel : ViewModel() {
         viewModelScope.launch {
             // TODO (04) Add filter to getProperties() with filter.value
             try {
-                _properties.value = MarsApi.retrofitService.getProperties(filter.value)
+                _properties.value = MarsApi.retrofitService.getProperties()
                 _status.value = MarsApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = MarsApiStatus.ERROR
