@@ -49,7 +49,6 @@ class OverviewViewModel : ViewModel() {
         get() = _property
 
 
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
 
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
