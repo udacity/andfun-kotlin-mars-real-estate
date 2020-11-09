@@ -48,8 +48,7 @@ interface MarsApiService {
      * HTTP method
      */
     @GET("realestate")
-    suspend fun getProperties(): List<MarsProperty>
-            Call<String>
+    fun getProperties(): Call<String>
 }
 
 /**
