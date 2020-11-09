@@ -54,7 +54,7 @@ interface MarsApiService {
      * HTTP method
      */
     @GET("realestate")
-    suspend fun getProperties(): List<MarsProperty>
+    fun getProperties(): Call<List<MarsProperty>>
     // TODO (03) Change the return type from our getProperties call to Deferred
 }
 
