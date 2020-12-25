@@ -37,7 +37,7 @@ class OverviewFragment : Fragment() {
     }
 
     private lateinit var vm: String
-    /**
+    /** 
      * Inflates the layout with Data Binding, sets its lifecycle owner to the OverviewFragment
      * to enable Data Binding to observe LiveData, and sets up the RecyclerView with an adapter.
      */
