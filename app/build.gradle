@@ -28,10 +28,10 @@ android {
     }
     defaultConfig {
         applicationId "com.example.android.marsrealestate"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"  
+        versionName "1.0"
     }
     buildTypes {
         release {
@@ -70,14 +70,21 @@ dependencies {
     // Core with Ktx
     implementation "androidx.core:core-ktx:$version_core"
 
-    // Moshi
+
+    /*Moshi Library Dependencies - Core Moshi JSON Library and
+       Moshi's Kotlin support*/
+
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
-    
-    // Retrofit - Deprecated plugins - No more required
-     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
-     implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+
+    // Retrofit core
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+
+    //Retrofit's converter factories - Moshi and Scalars
+    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
 
     // Retrofit with Moshi Converter
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
@@ -94,8 +101,6 @@ dependencies {
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
-
-
 
 
 }

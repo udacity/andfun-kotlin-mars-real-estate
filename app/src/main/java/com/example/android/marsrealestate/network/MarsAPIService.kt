@@ -17,8 +17,11 @@
 
 package com.example.android.marsrealestate.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
@@ -27,17 +30,32 @@ import retrofit2.http.GET
 private const val BASE_URL = "https://mars.udacity.com/"
 
 
+//Moshi builder
+val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory()) //help with Moshi's annotations
+        .build()
+
 //Retrofit builder
 private val retrofit =
-        Retrofit.Builder()
-                .addConverterFactory(ScalarsConverterFactory.create()) //return JSON String
+        Retrofit.Builder()          //transform JSON response to String
+                .addConverterFactory(ScalarsConverterFactory.create())
+                                   //transform JSON response to Kotlin Objects
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .baseUrl(BASE_URL)
                 .build()
-//interface with @GET that tells HTTP what this request is for
+
+
+
+
+
+  /*interface with @GET that tells HTTP what this request is for;
+   we pass in the endpoint*/
  interface MarsAPIService {
 
      @GET("realestate")
-     fun getProperties(): Call<String>
+     fun getProperties(): Call<List<MarsProperty>>
+
+
  }
 
 //MarsAPI Object - is a singleton because creating it is expensive
@@ -46,6 +64,8 @@ object MarsAPI {
 
     val retrofitService: MarsAPIService by lazy {
 
+
+        //to create a retrofit service you call retrofit.create passing in the interface
         retrofit.create(MarsAPIService::class.java)
     }
 }
