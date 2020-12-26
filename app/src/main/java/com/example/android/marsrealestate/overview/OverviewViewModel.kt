@@ -22,6 +22,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.marsrealestate.network.MarsAPI
+import com.example.android.marsrealestate.network.MarsProperty
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -40,7 +41,11 @@ class OverviewViewModel : ViewModel() {
     //single Mars Property
 
 
-    
+    private val _property = MutableLiveData<MarsProperty>()
+    val property:LiveData<MarsProperty>
+    get() = _property
+
+
 
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
@@ -62,6 +67,14 @@ class OverviewViewModel : ViewModel() {
 
                 val listResult = MarsAPI.retrofitService.getProperties()
                 _status.value = "Success ${listResult.size} Mars Properties retrieved"
+
+                //if returned properties are not empty set property to the first returned MarsPropertiy
+
+                if (listResult.isNotEmpty()){
+
+                    _property.value = listResult[0]
+
+                }
 
             }catch (e: Exception){
                 _status.value = "Failure - ${e.message}"

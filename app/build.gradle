@@ -39,6 +39,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -47,6 +49,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+
+
+
 }
 
 dependencies {
@@ -98,7 +104,14 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
 
+
+
+
+
     //Coil
-    implementation "io.coil-kt:coil:0.9.1"
+    implementation "io.coil-kt:coil:0.9.5"
+
+
+
 
 }

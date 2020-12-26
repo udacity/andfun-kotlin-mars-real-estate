@@ -17,3 +17,54 @@
 
 package com.example.android.marsrealestate
 
+import android.widget.ImageView
+import androidx.core.net.toUri
+import androidx.databinding.BindingAdapter
+import coil.api.load
+import coil.transform.BlurTransformation
+import coil.transform.CircleCropTransformation
+import coil.transform.GrayscaleTransformation
+import coil.transform.RoundedCornersTransformation
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+
+@BindingAdapter("imageURL")
+fun ImageView.bindImage(imgURL: String?) {
+
+    imgURL?.let {
+
+        val imgUri =
+                it.toUri()
+                        .buildUpon()
+                        .scheme("https")
+                        .build()
+
+        Glide.with(this)
+                .load(imgUri)
+                .apply(
+                        RequestOptions().placeholder(R.drawable.loading_animation)
+                                .error(R.drawable.ic_broken_image))
+                .into(this)
+    }
+}
+
+
+@BindingAdapter("imageURLCoil")
+fun ImageView.bindImageUsingCoil(imgURL: String?) {
+
+    imgURL?.let {
+
+        val imageUri =
+                it.toUri()
+                        .buildUpon()
+                        .scheme("https")
+                        .build()
+        load(imageUri){placeholder(R.drawable.loading_animation)
+        //crossfade(true)
+            error(R.drawable.ic_broken_image)
+           transformations( RoundedCornersTransformation(12f))
+           transformations( GrayscaleTransformation())
+        }
+    }
+}
+
