@@ -83,10 +83,6 @@ dependencies {
 
     //Retrofit's converter factories - Moshi and Scalars
     implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-
-
-    // Retrofit with Moshi Converter
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 
     // Coroutines - Deprecated - No more required
@@ -102,5 +98,7 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
 
+    //Coil
+    implementation "io.coil-kt:coil:0.9.1"
 
 }
