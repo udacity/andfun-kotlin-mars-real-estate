@@ -28,10 +28,6 @@ import com.bumptech.glide.request.RequestOptions
 import timber.log.Timber
 
 
-
-
-
-
 @BindingAdapter("imageURLCoil")
 fun ImageView.bindImageUsingCoil(imgURL: String?) {
 
@@ -49,6 +45,9 @@ fun ImageView.bindImageUsingCoil(imgURL: String?) {
             //placeholder and error images inside lambda
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_broken_image)
+
+            //enable image sampling
+            crossfade(true)
 
         }
 
