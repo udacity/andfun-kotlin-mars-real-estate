@@ -104,12 +104,9 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
 
-
-
-
-
     //Coil
     implementation "io.coil-kt:coil:0.9.5"
+     implementation  'com.jakewharton.timber:timber:4.7.1'
 
 
 

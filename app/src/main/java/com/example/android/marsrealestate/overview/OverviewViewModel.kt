@@ -57,33 +57,32 @@ class OverviewViewModel : ViewModel() {
     /**
      * Sets the value of the status LiveData to the Mars API status.
      */
-    private fun getMarsRealEstateProperties() {
 
+
+    private fun getMarsRealEstateProperties() {
         //viewModel Scope to launch Coroutine
         viewModelScope.launch {
 
-            //try-catch block
+            //try-catch block to catch exceptions
             try {
-
+                //get list from background thread
                 val listResult = MarsAPI.retrofitService.getProperties()
+
+                //set list value to MutableLiveData
                 _status.value = "Success ${listResult.size} Mars Properties retrieved"
 
-                //if returned properties are not empty set property to the first returned MarsPropertiy
-
+                //if list is not empty set property to the first returned item
                 if (listResult.isNotEmpty()){
 
                     _property.value = listResult[0]
-
                 }
-
+            //catch a generic exception
             }catch (e: Exception){
                 _status.value = "Failure - ${e.message}"
 
-            }
+            }}}
 
 
-        }
-    }
 }
 
 

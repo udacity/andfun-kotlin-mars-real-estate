@@ -21,14 +21,42 @@ import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import coil.api.load
-import coil.transform.BlurTransformation
-import coil.transform.CircleCropTransformation
 import coil.transform.GrayscaleTransformation
 import coil.transform.RoundedCornersTransformation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import timber.log.Timber
 
-@BindingAdapter("imageURL")
+
+
+
+
+
+@BindingAdapter("imageURLCoil")
+fun ImageView.bindImageUsingCoil(imgURL: String?) {
+
+//construct Uri with https scheme
+    imgURL?.let {
+
+        val imgUri = it.toUri() //String ext fxn from Android KTX Core Lib
+                .buildUpon()
+                .scheme("https")
+                .build()
+
+        //call Coil's load() and pass the URI
+        load(imgUri){
+
+            //placeholder and error images inside lambda
+            placeholder(R.drawable.loading_animation)
+            error(R.drawable.ic_broken_image)
+
+        }
+
+    }
+}
+
+
+/*@BindingAdapter("imageURL")
 fun ImageView.bindImage(imgURL: String?) {
 
     imgURL?.let {
@@ -45,26 +73,9 @@ fun ImageView.bindImage(imgURL: String?) {
                         RequestOptions().placeholder(R.drawable.loading_animation)
                                 .error(R.drawable.ic_broken_image))
                 .into(this)
+
+
+
     }
-}
-
-
-@BindingAdapter("imageURLCoil")
-fun ImageView.bindImageUsingCoil(imgURL: String?) {
-
-    imgURL?.let {
-
-        val imageUri =
-                it.toUri()
-                        .buildUpon()
-                        .scheme("https")
-                        .build()
-        load(imageUri){placeholder(R.drawable.loading_animation)
-        //crossfade(true)
-            error(R.drawable.ic_broken_image)
-           transformations( RoundedCornersTransformation(12f))
-           transformations( GrayscaleTransformation())
-        }
-    }
-}
+}*/
 

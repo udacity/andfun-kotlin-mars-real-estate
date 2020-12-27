@@ -54,7 +54,8 @@ private val retrofit =
 
      @GET("realestate")
     suspend fun getProperties(): List<MarsProperty>
-
+    /*we use Retrofit's built-in suspend support and return a list of
+      MarsProperty*/
 
  }
 
