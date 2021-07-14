@@ -53,8 +53,8 @@ class OverviewViewModel : ViewModel() {
      * Mars properties retrieved.
      */
     private fun getMarsRealEstateProperties() {
-        // TODO (05) Call viewModelScope.launch and place the rest of the code in it
-        // TODO (06) Call MarsApi.retrofitService.getProperties()
+        // TODO (05) Call coroutineScope.launch and place the rest of the code in it
+        // TODO (06) Call MarsApi.retrofitService.getProperties() and call await on the Deferred
         // TODO (07) Surround the Retrofit code with a try/catch, and set _response.value appropriately
         MarsApi.retrofitService.getProperties().enqueue( object: Callback<List<MarsProperty>> {
             override fun onFailure(call: Call<List<MarsProperty>>, t: Throwable) {
