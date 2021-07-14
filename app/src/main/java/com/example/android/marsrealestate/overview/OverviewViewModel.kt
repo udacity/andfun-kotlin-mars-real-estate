@@ -40,6 +40,9 @@ class OverviewViewModel : ViewModel() {
 
 
     // TODO (04) Create a coroutine Job and a CoroutineScope using the Main Dispatcher
+    // *Solution deviates from course video*
+    // Since we will use viewModelScope, this is no longer necessary.
+    // SKIP THIS STEP
 
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
@@ -53,9 +56,13 @@ class OverviewViewModel : ViewModel() {
      * Mars properties retrieved.
      */
     private fun getMarsRealEstateProperties() {
-        // TODO (05) Call viewModelScope.launch and place the rest of the code in it
-        // TODO (06) Call MarsApi.retrofitService.getProperties()
+        // TODO (05) Call coroutineScope.launch and place the rest of the code in it
+        // TODO (06) Call MarsApi.retrofitService.getProperties() and call await on the Deferred
         // TODO (07) Surround the Retrofit code with a try/catch, and set _response.value appropriately
+        // *Solution deviates from course video*
+        // Remove entire enqueue block (just like course video), then uncomment solution below.
+        // Inspect the differences between course video solution and commented solution below.
+        // Be sure to import "viewModelScope" and "launch" (Android Studio context actions should help).
         MarsApi.retrofitService.getProperties().enqueue( object: Callback<List<MarsProperty>> {
             override fun onFailure(call: Call<List<MarsProperty>>, t: Throwable) {
                 _response.value = "Failure: " + t.message
@@ -64,7 +71,20 @@ class OverviewViewModel : ViewModel() {
                 _response.value = "Success: ${response.body()?.size} Mars properties retrieved"
             }
         })
+
+//        viewModelScope.launch {
+//            try {
+//                var listResult = MarsApi.retrofitService.getProperties()
+//                _response.value = "Success: ${listResult.size} Mars properties retrieved"
+//            } catch (e: Exception) {
+//                _response.value = "Failure: ${e.message}"
+//            }
+//        }
     }
 
     // TODO (08) Cancel the Coroutine Job when the ViewModel is finished in onCleared
+    // *Solution deviates from course video*
+    // viewModelScope already handles canceling the scope when the ViewModel is cleared.
+    // https://developer.android.com/reference/kotlin/androidx/lifecycle/package-summary#viewmodelscope
+    // SKIP THIS STEP
 }
