@@ -83,6 +83,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 
     // TODO (01) Add dependencies for both Coroutines and for the Retrofit Coroutines Adapter
+    // *Solution deviates from course video*
+    // These dependencies are deprecated and no longer needed, leave them commented.
 
     // Coroutines - Deprecated - No more required
     // implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
