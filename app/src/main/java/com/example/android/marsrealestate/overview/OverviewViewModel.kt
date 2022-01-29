@@ -49,7 +49,7 @@ class OverviewViewModel : ViewModel() {
      * Sets the value of the response LiveData to the Mars API status or the successful number of
      * Mars properties retrieved.
      */
-    // TODO (07) Update getMarsRealEstateProperties to handle List<MarsProperty>
+    //  getMarsRealEstateProperties handles List<MarsProperty>
     private fun getMarsRealEstateProperties() {
         MarsApi.retrofitService.getProperties().enqueue( object: Callback<List<MarsProperty>> {
             override fun onFailure(call: Call<List<MarsProperty>>, t: Throwable) {

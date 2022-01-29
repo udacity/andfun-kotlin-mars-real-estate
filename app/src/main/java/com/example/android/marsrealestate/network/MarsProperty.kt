@@ -23,6 +23,7 @@ import com.squareup.moshi.Json
 // TODO (03) Use @Json to remap the img_src field to imgSrcUrl in the data class
 class MarsProperty(
     val id: String,
+    // override the json name with @json to match naming convention and accommodate the json response
     @Json(name="img_src") val imgSrcUrl: String,
     val type: String,
     val price: Double
