@@ -61,7 +61,7 @@ The basic steps are:
 3. Find and complete the TODOs.
 4. Optionally commit your code changes.
 5. Compare your code with the solution.
-6. Repeat steps 2-5 until you've gone trough all the steps to complete the toy app.
+6. Repeat steps 2-5 until you've gone through all the steps to complete the toy app.
 
 
 **Step 1: Clone the repo**
