@@ -75,7 +75,6 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
-    
     // Retrofit - Deprecated plugins - No more required
     // implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     // implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
@@ -95,4 +94,6 @@ dependencies {
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+
+    implementation "com.google.code.gson:gson:2.10.1"
 }
