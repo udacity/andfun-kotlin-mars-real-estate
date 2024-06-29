@@ -18,59 +18,50 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="viewModel"
-            type="com.example.android.marsrealestate.detail.DetailViewModel" />
-    </data>
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".DetailFragment">
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".DetailFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="16dp">
 
             <ImageView
-                android:id="@+id/main_photo_image"
-                android:layout_width="0dp"
-                android:layout_height="266dp"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.selectedProperty.imgSrcUrl}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/backgrounds/scenic" />
+              android:id="@+id/main_photo_image"
+              android:layout_width="0dp"
+              android:layout_height="266dp"
+              android:scaleType="centerCrop"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
-                android:id="@+id/property_type_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@{viewModel.displayPropertyType}"
-                android:textColor="#de000000"
-                android:textSize="39sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
-                tools:text="To Rent" />
+              android:id="@+id/property_type_text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="16dp"
+              android:textColor="#de000000"
+              android:textSize="39sp"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
+              tools:text="To Rent" />
 
             <TextView
-                android:id="@+id/price_value_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@{viewModel.displayPropertyPrice}"
-                android:textColor="#de000000"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/property_type_text"
-                tools:text="$100,000" />
+              android:id="@+id/price_value_text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="8dp"
+              android:textColor="#de000000"
+              android:textSize="20sp"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/property_type_text"
+              tools:text="$100,000" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
