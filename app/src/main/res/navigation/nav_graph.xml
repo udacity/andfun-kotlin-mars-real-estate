@@ -18,29 +18,26 @@
   -->
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/overviewFragment">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_graph"
+  app:startDestination="@id/overviewFragment">
 
     <fragment
-        android:id="@+id/overviewFragment"
-        android:name="com.example.android.marsrealestate.overview.OverviewFragment"
-        android:label="fragment_overview"
-        tools:layout="@layout/fragment_overview" >
+      android:id="@+id/overviewFragment"
+      android:name="com.example.android.marsrealestate.overview.OverviewFragment"
+      android:label="fragment_overview"
+      tools:layout="@layout/fragment_overview" >
         <action
-            android:id="@+id/action_showDetail"
-            app:destination="@id/detailFragment" />
+          android:id="@+id/action_showDetail"
+          app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.example.android.marsrealestate.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail">
-        <argument
-            android:name="selectedProperty"
-            app:argType="com.example.android.marsrealestate.network.MarsProperty"/>
+      android:id="@+id/detailFragment"
+      android:name="com.example.android.marsrealestate.detail.DetailFragment"
+      android:label="fragment_detail"
+      tools:layout="@layout/fragment_detail">
     </fragment>
 
 </navigation>
